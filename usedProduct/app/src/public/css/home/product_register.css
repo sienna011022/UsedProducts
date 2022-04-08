@@ -1,0 +1,124 @@
+
+.pointer {
+  width: 130px;
+  height: 130px;
+  position: relative;
+  background: #D3BB98;
+}
+.pointer:after {
+ content: "";
+ position: absolute;
+ left: 0; 
+ bottom: 0; 
+ width: 0; 
+ height: 0; 
+ border-left: 65px solid rgb(241, 240, 240);
+ border-top: 65px solid transparent; border-bottom:65px solid transparent; 
+} 
+.pointer:before { 
+  content: ""; 
+ position: absolute; 
+  right: -65px; 
+ bottom: 0; 
+ width: 0; 
+ height: 0;
+ border-left: 65px solid #D3BB98; 
+  border-top: 65px solid transparent; border-bottom: 65px solid transparent;
+}
+.pointer1 {
+ width: 130px;
+ height: 130px;
+ position: relative;
+ background: #D1710D;
+}
+.pointer1:after {
+ content: "";
+ position: absolute;
+ left: 0; 
+ bottom: 0; 
+ width: 0; 
+ height: 0; 
+ border-left: 65px solid rgb(241, 240, 240);
+  border-top: 65px solid transparent; border-bottom:65px solid transparent; 
+} 
+.pointer1:before { 
+  content: ""; 
+ position: absolute; 
+ right: -65px; 
+  bottom: 0; 
+  width: 0; 
+  height: 0;
+ border-left: 65px solid #D1710D; 
+  border-top: 65px solid transparent; border-bottom: 65px solid transparent;
+}
+.p {
+  margin-left: 66px; 
+ margin-top: 50px;
+  font-weight: 900;
+}
+.div {
+      background-color: white;
+      border: 2px solid #F5EADA;
+      width: 75%;
+      height: 100%;
+margin-left: 12%;
+margin-top : 10px;
+  }
+
+.button {
+      background-color: #F5EADA;
+      border: none;
+      color: black;
+      border-radius:25px;
+      text-align: center;
+      font-size: 16px;
+width:100px;
+padding:8px;
+margin:4px;
+font-family: 'Jua', sans-serif;
+  }
+
+ .wrap{
+width:100%; 
+background:rgb(241, 240, 240);
+}
+
+nav,ul,li{
+margin:0;
+padding:0;
+list-style:none;
+}
+.menu{
+background-color:#d3bb98;
+text-align:center;
+width:1000px;
+margin:auto;
+}
+.menu>ul>li{
+display:inline-block;
+}
+.menu>ul>li:hover>a{
+display:inline-block;
+background-color:rgb(20,110,170);
+color:white;
+}
+a{
+color:black;
+text-decoration:inherit;
+display:block;
+padding:10px;
+font-size:20
+}
+table {
+      border: 2px solid #d3bb98;
+border-collapse: collapse;
+      width: 80%;
+      height: 100%;
+margin-top : 20px;
+margin-left:auto;
+margin-right:auto;
+text-align: center;
+  }
+tr, th, td {
+border: 2px solid #d3bb98;
+}
