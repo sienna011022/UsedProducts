@@ -1,0 +1,1 @@
+{"BuyerID":"buyer1","Score":"0","Historys":[{"ProductID":"product1","SellerID":"seller1","State":"sold","Update_date":20220409}]}
