@@ -1,5 +1,4 @@
 # usedProduct
-# usedProduct
-# usedProduct
-# UsedProducts
-# Product
+* usedProduct/usedProduct/chaincode/app/
+* $npm start
+* register --> localhost:3000/product_register
