@@ -10,9 +10,10 @@ const Deliver = require("../../models/Deliver");
 const Balance = require("../../models/Balance");
 const BalanceStorage = require("../../models/BalanceStorage");
 
+
+
 const cpath =  "../app/";
 const wpath = "../app/ccp";
-
 // Hyperledger Bridge
 const { Wallets, Gateway } = require("fabric-network");
 const fs = require("fs");
@@ -28,10 +29,12 @@ async function cc_call(fn_name, args) {
     console.log(`Wallet path: ${walletPath}`);
 
     const userExists = await wallet.get("appUser");
+   
     if (!userExists) {
         console.log(
             'An identity for the user "appUser" does not exist in the wallet'
         );
+      
         console.log("Run the registerUser.js application before retrying");
         return;
     }
