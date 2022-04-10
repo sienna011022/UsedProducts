@@ -1,1 +1,1 @@
-{"BuyerID":"buyer1","Score":"0","Historys":[{"ProductID":"product1","SellerID":"seller1","State":"sold","Update_date":20220409}]}
+Error: endorsement failure during query. response: status:500 message:"error in simulation: failed to execute transaction 0ae0baf1f24490abef900a7ecccff5d7368e0e8398c28057ff9fe6971dac366a: could not launch chaincode teamate_1:65b1e20df140cbd921012c5faebcaa78853d36793ee8f95128a3f4b8ffc52c1a: error starting container: error starting container: API error (404): network _test not found" 

@@ -10,18 +10,18 @@ const Deliver = require("../../models/Deliver");
 const Balance = require("../../models/Balance");
 const BalanceStorage = require("../../models/BalanceStorage");
 
-
-
+const cpath =  "../app/";
+const wpath = "../app/ccp";
 
 // Hyperledger Bridge
 const { Wallets, Gateway } = require("fabric-network");
 const fs = require("fs");
 const path = require("path");
-const ccpPath = path.resolve(__dirname, "ccp", "connection-org1.json");
+const ccpPath = path.resolve(cpath , "ccp", "connection-org1.json");
 let ccp = JSON.parse(fs.readFileSync(ccpPath, "utf8"));
 
 async function cc_call(fn_name, args) {
-    const walletPath = path.join(process.cwd(), "wallet");
+    const walletPath = path.join(wpath, "wallet");
     console.log(`Wallet path: ${walletPath}`);
     const wallet = await Wallets.newFileSystemWallet(walletPath);
 
@@ -55,7 +55,7 @@ async function cc_call(fn_name, args) {
         e = args[3];
         p = args[4];
         s = args[5];
-        result = await contract.submitTransaction("addRating", q,w,t,e,p,s);}
+        result = await contract.submitTransaction("InitProduct", q,w,t,e,p,s);}
 
     // } else if (fn_name == "addRating") {
     //     e = args[0];
@@ -125,7 +125,8 @@ const process = {
 
             console.log("REGISTER PRODUCT: " + productName);
             var args=[sellerID,productID,timestamp,productName,info,price]
-            result = await cc_call("addUser", args);
+            result = await cc_call("InitProduct", args);
+         
             
             const myobj = { result: "success" };
             res.status(200).json(myobj);
