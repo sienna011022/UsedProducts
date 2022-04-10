@@ -28,7 +28,7 @@ class ProductStorage{
                if(err) reject(`${err}`);
               
                const result = JSON.parse(JSON.stringify(data))
-               var response = {result :0 ,partyInfo : 'seller' , itemList : Object.values(result)}
+               var response = {result:0 ,partyInfo: "seller" ,itemList: Object.values(result)}
                resolve(response)
            
               

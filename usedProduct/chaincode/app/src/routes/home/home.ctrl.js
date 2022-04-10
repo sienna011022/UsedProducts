@@ -11,9 +11,8 @@ const Balance = require("../../models/Balance");
 const BalanceStorage = require("../../models/BalanceStorage");
 
 
-
 const cpath =  "../app/";
-const wpath = "../app/ccp";
+const wpath = "../app/";
 // Hyperledger Bridge
 const { Wallets, Gateway } = require("fabric-network");
 const fs = require("fs");
@@ -49,16 +48,18 @@ async function cc_call(fn_name, args) {
     const network = await gateway.getNetwork("mychannel");
     const contract = network.getContract("teamate");
 
-    var result;
+
 
     if (fn_name == "InitProduct") {
-        q = args[0];
-        w = args[1];
-        t = args[2];
-        e = args[3];
-        p = args[4];
-        s = args[5];
-        result = await contract.submitTransaction("InitProduct", q,w,t,e,p,s);}
+        var q = args[0];
+        var w = args[1];
+        var t = args[2];
+        var e = args[3];
+        var p = args[4];
+        var s = args[5];
+        var z = args[6];
+        var f = args[7];
+        await contract.submitTransaction("InitProduct", q,w,t,e,p,s,z,f);}
 
     // } else if (fn_name == "addRating") {
     //     e = args[0];
@@ -67,10 +68,11 @@ async function cc_call(fn_name, args) {
     //     result = await contract.submitTransaction("addRating", e, p, s);
     // } else if (fn_name == "readRating")
     //     result = await contract.evaluateTransaction("readRating", args);
-    else result = "not supported function";
+   
+    console.log('to be continue')}
 
-    return result;
-}
+
+
 
 
 const output = {
@@ -117,7 +119,7 @@ const process = {
      product_register : async(req,res) => {
         const product = new Product(req.body);
         const response = await product.product_register();
-        
+      
         if(response){
                 const sellerID = req.body.sellerID
                 const productID = req.body.productID
@@ -125,18 +127,19 @@ const process = {
                 const productName = req.body.productName
                 const info = req.body.info
                 const price = req.body.price
+                const Deliver_address =  "BUndang"
+	            const Reject_info  = "none"
 
             console.log("REGISTER PRODUCT: " + productName);
-            var args=[sellerID,productID,timestamp,productName,info,price]
-            result = await cc_call("InitProduct", args);
-         
+            var args=[sellerID,productID,productName,info,price,Deliver_address,Reject_info,timestamp]
+            result = await cc_call("InitProduct", args);}
             
-            const myobj = { result: "success" };
-            res.status(200).json(myobj);
-        }
-        return res.json(response)
-        //pdf 엮기
+            //pdf 엮기
+
+        return res.json(response);
      },
+
+
      balance : async(req,res) => {
         const balance = new Balance(req.body);
         const response = await balance.UpdateBalance();
