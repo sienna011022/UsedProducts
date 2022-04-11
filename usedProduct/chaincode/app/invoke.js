@@ -63,9 +63,19 @@ async function main() {
         const result = await contract.evaluateTransaction(
             "GetSellerHistory","seller5"
             );
+
+
         console.log(
             `Transaction has been evaluated, result is: ${result.toString()}`
         );
+
+        const results = await contract.evaluateTransaction(
+            "GetProductState","product1"
+            );
+
+            console.log(
+                `Transaction has been evaluated, result is: ${results.toString()}`
+            );
         // Disconnect from the gateway.
         await gateway.disconnect();
         

@@ -62,7 +62,13 @@ async function cc_call(fn_name, args) {
         await contract.submitTransaction("InitProduct", q,w,t,e,p,s,z,f);}
 
     else if (fn_name == "GetProductState") {
-        result = await contract.submitTransaction("GetProductState",args);
+        const results = await contract.evaluateTransaction("GetProductState",args);
+
+        return results
+
+
+        // Disconnect from the gateway.
+
         
 
 
@@ -70,6 +76,7 @@ async function cc_call(fn_name, args) {
         result = await contract.evaluateTransaction("readRating", args);
    
     console.log('chaincode success')
+
 
 
 }
@@ -105,14 +112,14 @@ const process = {
 
         const product = new Product(req.body);
         var args = req.body.productID
-        console.log(args)
+        console.log("GET STATE OF PRODUCT: " + args);
 
         var result = await cc_call("GetProductState", args);
-            
-        // console.log("result: " + result.toString());
-        // const myobj = JSON.parse(result, "utf8");
+           
+        console.log("result: " + result.toString());
+        const myobj = JSON.parse(result, "utf8");
     
-        return res.json(result)
+        return res.json(myobj)
         
        
        
