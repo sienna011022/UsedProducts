@@ -69,7 +69,7 @@ async function cc_call(fn_name, args) {
     // } else if (fn_name == "readRating")
     //     result = await contract.evaluateTransaction("readRating", args);
    
-    console.log('to be continue')}
+    console.log('chaincode success')}
 
 
 
@@ -126,17 +126,21 @@ const process = {
                 const timestamp = req.body.timestamp
                 const productName = req.body.productName
                 const info = req.body.info
-                const price = req.body.price
-                const Deliver_address =  "BUndang"
-	            const Reject_info  = "none"
+                const Deliver_address =  req.body.address
+	            const reject  ="none"
+                const BuyerID = "buyerID"
+                var state = "product register"
 
             console.log("REGISTER PRODUCT: " + productName);
-            var args=[sellerID,productID,productName,info,price,Deliver_address,Reject_info,timestamp]
-            result = await cc_call("InitProduct", args);}
+            var args=[productID,sellerID,state,BuyerID,info,Deliver_address,reject,timestamp]
+            var result = await cc_call("InitProduct", args);}
             
+        return res.json(response)
+        
+        
             //pdf 엮기
 
-        return res.json(response);
+     
      },
 
 
