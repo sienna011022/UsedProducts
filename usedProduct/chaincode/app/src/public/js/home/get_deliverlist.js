@@ -1,22 +1,38 @@
 
+//sellerHistory
+// sellerName = document.querySelector("#sellerName");
+// sellerBtn = document.querySelector("#seller");
+// sellerBtn.addEventListener("click",get_sellerHistory);
+
+// //deliver select
+// registerBtn = document.querySelector("#button");
+// registerBtn.addEventListener("click",get_deliverlist);
+    
+//request deliver
+
 
 const 
-sellerName = document.querySelector("#sellerName");
-sellerBtn = document.querySelector("#seller");
-sellerBtn.addEventListener("click",get_sellerHistory);
+ productID = document.querySelector("#productID"),
 
 
-registerBtn = document.querySelector("#button");
-registerBtn.addEventListener("click",get_deliverlist);
-    
-
-requestBtm = document.querySelector("#request");
-requestBtm.addEventListener("click",save_deliverstate);
 
 
-function save_deliverstate(){
-    
-    fetch("/save_deliverstate",{
+ registerBtn = document.querySelector("#button");
+ registerBtn.addEventListener("click",get_productState);
+
+
+function get_productState(){
+
+
+     
+    const req = {
+
+        productID : productID.value,
+ 
+
+    };
+    console.log(req)
+    fetch("/get_productState",{
         
         method : "POST",
         headers :{
@@ -26,29 +42,7 @@ function save_deliverstate(){
        
     
         
-    })
-        .then((res) => res.json())
-        .then((res) => {
-            if(res){
-                req = {buyerID : sellerID.value,
-                        deliverID : deliverID.value,
-                        state : "deliver"
-                };
-                fetch("/update_deliverstate",{
-                    method : "POST",
-                    headers :{
-                        "Content-Type" : "application/json",
-                    },
-                    body : JSON.stringify(req),
-                })
-                    .then((res) => res.json())
-                    .then((res) => {
-                        if(res){console.log(res.status(200),json(res.myobj))}
-                                    
-                else{
-                    alert(res.msg);   
-                }
-            })
+    }).then((res) => console.log(res))
     .catch((err) => {
         console.error(new Error("Error- get deliver list"));
     });
@@ -57,60 +51,55 @@ function save_deliverstate(){
 
 }
 
-function get_deliverlist(){
+// function get_deliverlist(){
     
 
-    fetch("/get_deliverlist",{
-        method : "POST",
-        headers :{
-            "Content-Type" : "application/json",
-        },
+//     fetch("/get_deliverlist",{
+//         method : "POST",
+//         headers :{
+//             "Content-Type" : "application/json",
+//         },
         
-    })
-        .then((res) => res.json())
-        .then((res) => {
-            if(res){
-                //get data
-                console.log(res)
-        }else{
-            alert("Cannot get deliver list");
+//     })
+//         .then((res) => res.json())
+//         .then((res) => {
+//             if(res){
+//                 //get data
+//                 console.log(res)
+//         }else{
+//             alert("Cannot get deliver list");
         
-        }
-    })
-    .catch((err) => {
-        console.error(new Error("Error- get deliver list"));
-    });
+//         }
+//     })
+//     .catch((err) => {
+//         console.error(new Error("Error- get deliver list"));
+//     });
 
 
 
-}
+// }
 
         
     
 
-    fetch("/get_sellerHistory",{
-        method : "POST",
-        headers :{
-            "Content-Type" : "application/json",
-        },
-        body : JSON.stringify(req),
-    })
-        .then((res) => res.json())
-        .then((res) => {
-            if(res){
-                //get data
-                console.log(res);
-        }else{
-            alert("Cannot get seller history list");
+    // fetch("/get_sellerHistory",{
+    //     method : "POST",
+    //     headers :{
+    //         "Content-Type" : "application/json",
+    //     },
+    //     body : JSON.stringify(req),
+    // })
+    //     .then((res) => res.json())
+    //     .then((res) => {
+    //         if(res){
+    //             //get data
+    //             console.log(res);
+    //     }else{
+    //         alert("Cannot get seller history list");
         
-        }
-    })
-    .catch((err) => {
-        console.error(new Error("Error- get seller list"));
-    });
+    //     }
+    // })
+    // .catch((err) => {
+    //     console.error(new Error("Error- get seller list"));
+    // });
 
-
-}
-        )
-
-}

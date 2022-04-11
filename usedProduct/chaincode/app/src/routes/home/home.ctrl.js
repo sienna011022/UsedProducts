@@ -61,15 +61,18 @@ async function cc_call(fn_name, args) {
         var f = args[7];
         await contract.submitTransaction("InitProduct", q,w,t,e,p,s,z,f);}
 
-    // } else if (fn_name == "addRating") {
-    //     e = args[0];
-    //     p = args[1];
-    //     s = args[2];
-    //     result = await contract.submitTransaction("addRating", e, p, s);
-    // } else if (fn_name == "readRating")
-    //     result = await contract.evaluateTransaction("readRating", args);
+    else if (fn_name == "GetProductState") {
+        result = await contract.submitTransaction("GetProductState",args);
+        
+
+
+    } else if (fn_name == "readRating")
+        result = await contract.evaluateTransaction("readRating", args);
    
-    console.log('chaincode success')}
+    console.log('chaincode success')
+
+
+}
 
 
 
@@ -96,7 +99,26 @@ const process = {
 
 
 
-    save_deliverstate: async(req,res) => {
+
+    get_productState: async(req,res) => {
+      
+
+        const product = new Product(req.body);
+        var args = req.body.productID
+        console.log(args)
+
+        var result = await cc_call("GetProductState", args);
+            
+        // console.log("result: " + result.toString());
+        // const myobj = JSON.parse(result, "utf8");
+    
+        return res.json(result)
+        
+       
+       
+    },
+
+    get_sellerHistory: async(req,res) => {
        
         const deliver = new Deliver(req.body);
         const response = await deliver.get_sellerHistory();

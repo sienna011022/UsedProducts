@@ -13,7 +13,7 @@ router.get("/get_deliverlist",ctrl.output.get_deliverlist);
 
 router.post("/product_register",ctrl.process.product_register);
 router.post("/get_deliverlist",ctrl.process.get_deliverlist);
-router.post("/save_deliverstate",ctrl.process.save_deliverstate);
+router.post("/get_productState",ctrl.process.get_productState);
 router.post("/balance",ctrl.process.balance);
 // router.post("/update_state",ctrl.process.update_state);
 // router.post("/update_deliverstate",ctrl.process.update_deliverstate);
